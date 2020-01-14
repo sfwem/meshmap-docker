@@ -1,10 +1,11 @@
-# Makefile for meshmap-docker
+# Makefile for AREDN MeshMap Docker Container.
 #
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht
 # License:: Apache License, Version 2.0
 # Source:: https://github.com/ampledata/meshmap-docker
 #
+
 default: build
 
 # Build Docker image
@@ -19,12 +20,13 @@ clean:
 
 run: make_mysql_dir get_user_settings docker_run
 
+# Create the mysql persistent directory:
 make_mysql_dir:
 	mkdir -p meshmap-mysql
 
+# Download the user-settings.ini to allow local modifications:
 get_user_settings:
 	curl -so user-settings.ini https://gitlab.kg6wxc.net/mesh/meshmap/raw/master/scripts/user-settings.ini-default
-
 
 # Image and binary can be overidden with env vars.
 DOCKER_IMAGE ?= ampledata/meshmap
@@ -67,7 +69,7 @@ else
   DOCKER_TAG = $(CODE_VERSION)-$(GIT_COMMIT)$(DOCKER_TAG_SUFFIX)
 endif
 
-
+# Build the Docker container:
 docker_build:
 	# Build Docker image
 	docker build \
@@ -77,16 +79,17 @@ docker_build:
 		--build-arg VCS_REF=$(GIT_COMMIT) \
 		-t $(DOCKER_IMAGE):$(DOCKER_TAG) .
 
+# Run the Docker container:
 docker_run:
 	docker run -it \
-	-p 8888:80 \
-	-e "MYSQL_ADMIN_PASS=changeme" \
-		-e "MYSQL_USER_PASS=mesh-map_sql_user_password" \
+	    -p 8888:80 \
+	    -e "MYSQL_ADMIN_PASS=changeme" \
+		-e "MYSQL_USER_PASS=changeme" \
 		-v `pwd`/meshmap-mysql:/var/lib/mysql \
 		-v `pwd`/user-settings.ini:/meshmap/scripts/user-settings.ini \
-		ampledata/meshmap:1.0.0b1-8db8bce-dirty
-#		ampledata/meshmap
+		$(DOCKER_IMAGE)
 
+# Push the Docker container to Docker Hub (for local builds):
 docker_push:
 	# Tag image as latest
 	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(DOCKER_IMAGE):latest

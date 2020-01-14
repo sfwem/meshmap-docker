@@ -1,5 +1,4 @@
 #!/bin/bash
-#
 # Wrapper script that creates the node-map Tables if they don't already exist, and starts the get-map-info poller
 # in a loop with a POLLER_INTERVAL interval.
 #
@@ -8,11 +7,7 @@
 # License:: Apache License, Version 2.0
 # Source:: https://github.com/ampledata/meshmap-docker
 #
-# __author__ = 'Greg Albrecht W2GMD <oss@undef.net>'
-#__copyright__ = 'Copyright 2020 Greg Albrecht'
-#__license__ = 'Apache License, Version 2.0'
-#__source__ = 'https://github.com/ampledata/meshmap-docker'
-#
+
 set -x
 
 echo "Checking to see if mysqld is running..."

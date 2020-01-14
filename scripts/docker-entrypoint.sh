@@ -1,4 +1,5 @@
 #!/bin/bash
+# docker-entrypoint.sh for AREDN MeshMap Docker Container.
 #
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht

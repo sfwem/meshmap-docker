@@ -1,4 +1,4 @@
-# Dockerfile for meshmap
+# Dockerfile for AREDN MeshMap Docker Container.
 # Run the AREDN MeshMap in a Docker Container
 #
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
@@ -6,6 +6,7 @@
 # License:: Apache License, Version 2.0
 # Source:: https://github.com/ampledata/meshmap-docker
 #
+
 FROM mattrayner/lamp:latest-1804
 
 # The following ENV variables should be overwritten at run time with:
