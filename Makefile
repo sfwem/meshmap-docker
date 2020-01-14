@@ -32,7 +32,7 @@ ifeq ($(MAKECMDGOALS), release)
   endif
 
   # See what commit is tagged to match the version
-  VERSION_COMMIT = $(strip $(shell git rev-list $(CODE_VERSION) -n 1 | cut -c1-7))
+  VERSION_COMMIT = $(shell git rev-list $(CODE_VERSION) -n 1 | cut -c1-7)
   ifneq ($(VERSION_COMMIT), $(GIT_COMMIT))
     $(error echo You are trying to push a build based on commit $(GIT_COMMIT) but the tagged release version is $(VERSION_COMMIT))
   endif
@@ -51,11 +51,11 @@ endif
 docker_build:
 	# Build Docker image
 	docker build \
-  --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-  --build-arg VERSION=$(CODE_VERSION) \
-  --build-arg VCS_URL=`git config --get remote.origin.url` \
-  --build-arg VCS_REF=$(GIT_COMMIT) \
-	-t $(DOCKER_IMAGE):$(DOCKER_TAG) .
+        --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+        --build-arg VERSION=$(CODE_VERSION) \
+        --build-arg VCS_URL=`git config --get remote.origin.url` \
+        --build-arg VCS_REF=$(GIT_COMMIT) \
+	    -t $(DOCKER_IMAGE):$(DOCKER_TAG) .
 
 docker_push:
 	# Tag image as latest
