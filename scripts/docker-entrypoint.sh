@@ -1,17 +1,25 @@
 #!/bin/bash
+#
+# Author:: Greg Albrecht W2GMD <oss@undef.net>
+# Copyright:: Copyright 2020 Greg Albrecht
+# License:: Apache License, Version 2.0
+# Source:: https://github.com/ampledata/meshmap-docker
+#
 
 set -ex
 
 echo "Inside docker-entrypoint.sh"
 
-if [ "$1" = "mesh-map" ]; then
-  echo "Starting mesh-map"
-  echo nameserver $TOPO_HOST > /etc/resolv.conf
+if [ "$1" = "meshmap" ]; then
+  echo "Starting meshmap"
 
+  # 'app' is a Docker volume, so we can't copy this data over during build time:
   cp -pr meshmap app
-  cp user-settings.ini app/meshmap/scripts/user-settings.ini
-  ./scripts/create_node_map_tables.sh &
+
+  # Start supervisor, et al:
   ./run.sh
+
+  # Exit after we've made our peace:
   exit
 fi
 

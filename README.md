@@ -6,7 +6,7 @@ Docker container to run [Eric Satterlee KG6WXC's AREDN MeshMap](https://gitlab.k
 
 1. Download a copy of [user-settings.ini-default](https://gitlab.kg6wxc.net/mesh/meshmap/blob/master/scripts/user-settings.ini-default) and rename it to `user-settings.ini`:
     ```bash
-   $ curl -O user-settings.ini https://gitlab.kg6wxc.net/mesh/meshmap/raw/master/scripts/user-settings.ini-default
+    $ curl -so user-settings.ini https://gitlab.kg6wxc.net/mesh/meshmap/raw/master/scripts/user-settings.ini-default
    ```
 2. Configure the `user-settings.ini` per instructions [here](https://gitlab.kg6wxc.net/mesh/meshmap/blob/master/scripts/user-settings.ini-default).
     At a minimum you will need to set `sql_passwd`.
@@ -15,8 +15,8 @@ Docker container to run [Eric Satterlee KG6WXC's AREDN MeshMap](https://gitlab.k
     ```bash
     $ docker run -d \
         -p 8888:80 \
-        -e "MYSQL_ADMIN_PASS='changeme'" \
-        -e "MYSQL_USER_PASS='changeme'" \
+        -e "MYSQL_ADMIN_PASS=changeme" \
+        -e "MYSQL_USER_PASS=changeme" \
         -v `pwd`/meshmap-mysql:/var/lib/mysql \
         -v `pwd`/user-settings.ini:/meshmap/scripts/user-settings.ini \
         ampledata/meshmap
@@ -77,3 +77,13 @@ services:
 Once the instance is running, all you have to do is open a web browser and point it to `http://localhost:8888`
 
 ## License
+
+Apache License, Version 2.0
+
+## Copyright
+
+Copyright 2020 Greg Albrecht
+
+## Authors
+
+- [Greg Albrecht W2GMD (@ampledata)](https://github.com/ampledata): Initial 'dockerization' of MeshMap.
