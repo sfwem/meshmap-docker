@@ -1,4 +1,0 @@
-#!/bin/bash
-#change to the directory get-map-info.php is in
-cd /home/pi/meshmap/scripts
-./get-map-info.php
