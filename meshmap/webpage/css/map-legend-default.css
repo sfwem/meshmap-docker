@@ -1,0 +1,170 @@
+/*Copy this file to map-legend.css to override */
+#legendHidden {
+	position: relative;
+	top: 0px;
+	right: 0px;
+	float: right;
+	display: none;
+}
+#legendLinkButton {
+	background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	display: inline;
+	color: white;
+	cursor: pointer;
+}
+#legendLinkButtonHidden {
+	background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	display: inline;
+	color: black;
+	font-weight: bold;
+	cursor: pointer;
+}
+#legend {
+	position: relative;
+	width: 200px;
+	height: 120px;
+	border: 1px solid black;
+	border-radius: 5px;
+	float: right;
+	padding: 2px;
+	background-color: rgba(0,0,0,0.5);
+	/*visibility: visible;*/
+	font-weight: bold;
+}
+#legendGradientRectangle {
+	position: absolute;
+	top: 2px;
+	background: linear-gradient(to right, green, yellow, red);
+	border-radius: 5px;
+	text-align: center;
+	height: 20px;
+	width: 200px;
+}
+#legendDTDLink {
+	/*#A020F0*/
+	position: absolute;
+	top: 22px;
+	right: 2px;
+	background: #A020F0;
+	border-radius: 5px;
+	text-align: center;
+	height: 20px;
+	width: 75px;
+	float: right;
+}	
+#legendOtherWireless {
+	position: absolute;
+	top: 42px;
+	right: 2px;
+	background: steelblue;
+	border-radius: 5px;
+	text-align: center;
+	height: 20px;
+	width: 75px;
+	float: right;
+}
+#legendTunnelLink {
+	/*#808080*/
+	position: absolute;
+	top: 62px;
+	right: 2px;
+	background: #808080;
+	border-radius: 5px;
+	text-align: center;
+	height: 20px;
+	width: 75px;
+	float: right;
+}
+#legendInfinite {
+	position: absolute;
+	top: 82px;
+	right: 2px;
+	background: #000000;
+	border-radius: 5px;
+	color: white;
+	text-align: center;
+	height: 20px;
+	width: 75px;
+	float: right;
+}
+#legendHide {
+	position: absolute;
+	bottom: 1px;
+	right: 1px;
+	float: right;
+	color: white;
+}
+
+#legend900MHz {
+	display: flex;
+	position: absolute;
+	top: 22px;
+	/*left: 2px;*/
+	align-items: center;
+	height: 20px;
+	/*width: 75px;*/
+	float: left;
+	color: white;
+}
+#legend2GHz {
+	display: flex;
+	position: absolute;
+	top: 42px;
+	/*left: 2px;*/
+	align-items: center;
+	height: 20px;
+	/*width: 75px;*/
+	float: left;
+	color: white;
+}
+#legend3GHz {
+	display: flex;
+	position: absolute;
+	top: 62px;
+	/*left: 2px;*/
+	align-items: center;
+	height: 20px;
+	/*width: 75px;*/
+	float: left;
+	color: white;
+}
+#legend5GHz {
+	display: flex;
+	position: absolute;
+	top: 82px;
+	/*left: 2px;*/
+	align-items: center;
+	height: 20px;
+	/*width: 75px;*/
+	float: left;
+	color: white;
+}
+#legendUnknownOther {
+	display: flex;
+	position: absolute;
+	top: 102px;
+	/*right: 2px;*/
+	/*background: #000000;*/
+	/*border-radius: 5px;*/
+	color: white;
+	align-items: center;
+	/*text-align: center;*/
+	height: 20px;
+	/*width: 75px;*/
+	/*float: right;*/
+	float: left;
+}
+.legendBandIcon {
+	/*display: flex;*/
+	/*align-items: center;*/
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+}
+

@@ -1,0 +1,213 @@
+/*** background color of the overall page ***/
+body {
+    background-color: #dddddd;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+}
+/*** This will change the size of the top left corner logo ***/
+#pageLogo {
+	width: 50px;
+	vertical-align: middle;
+}
+#headerText {
+    margin: 0;
+}
+/*** This will change the size of the map "container" ***/
+/*** it should be left to default of 100%/100% of the window ***/
+#meshmap {
+	/*height: 700px;*/
+	/*margin: 5px auto;*/
+	/*width: 100%;*/
+}
+/*** this is the size of the map itself ***/
+#mapid {
+	/*width: 100vh;*/
+	height: 100vh;
+}
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+.center {
+    text-align: center;
+}
+
+.login {
+	text-align: center;
+}
+
+.loginBoldText {
+	text-align: center;
+	font-weight: bold;
+}
+
+.boldText {
+	font-weight: bold;
+}
+td.BackgroundColor {
+	background-color: #dddddd;
+}
+/*wxc*/
+boldText {
+	font-weight: bold;
+}
+/*wxc*/
+redText {
+	color: red;
+}
+/*wxc*/
+greenText {
+	color: green;
+}
+/*wxc*/
+a.normalTextLink {
+	color: inherit;
+	/*text-decoration: inherit;*/
+	text-decoration: none;
+}
+
+/*wxc*/
+tr:nth-child(even) {
+	background-color: #c0c0c0;
+}
+
+/*wxc*/
+tr:nth-child(odd) {
+	background-color: #d0d0d0;
+}
+
+.linkButton {
+	background: none;
+	color: blue;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	display: inline;
+}
+
+.inlineForm {
+	display: inline;
+}
+
+MapTitle {
+    color: Black;
+    font-weight:bold;
+    font-size: 2em;
+    vertical-align: middle;
+}
+
+Warning_MSG {
+    color: Red;
+    font-weight:bold;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+Welcome_MSG {
+    /* color: Blue; */
+    font-weight:bold;
+    font-size: 1.5em;
+    text-align: center;
+    display: inline;
+}
+
+/*wxc*/
+Welcome_MSG2 {
+	color: Black;
+	font-weight: bold;
+	text-align: center;
+	display: inline;
+}
+
+Internet_MSG {
+    color: Purple;
+    font-weight:bold;
+    font-size: 1em;
+    text-align: center;
+}
+Mesh_MSG {
+    color: Orange;
+    font-weight:bold;
+    font-size: 1em;
+    text-align: center;
+}
+NodeTitle {
+    color: blue;
+    font-weight:bold;
+    text-align: center;
+}
+
+Device_Linux {
+    color: yellow;
+}
+
+Device_900MHz {
+    color: magenta;
+}
+
+Device_24GHz {
+    color: purple;
+}
+
+Device_3GHz {
+    color: blue;
+}
+
+Device_5GHz {
+    color: gold;
+}
+
+dtd_link {
+    /*color: steelblue;*/
+}
+
+Link_DTD {
+    color: #A020F0;
+}
+
+Link_Tunnel {
+    color: #808080;
+}
+Link_Infinite {
+    Color: black;
+}
+MAP_DETAILS {
+    color: Black;
+    font-weight:bold;
+    font-size: 1.25em;
+}
+
+/*NEW ADDITIONS*/
+.maptitle {
+    color: Black;
+    font-weight:bold;
+    font-size: 2em;
+    vertical-align: middle;
+    display: inline;
+}
+.welcomeMsg {
+    /* color: Blue; */
+    font-weight:bold;
+    font-size: 1.5em;
+    text-align: center;
+    display: inline;
+}
+.welcomeMsg2 {
+	color: Black;
+	font-weight: bold;
+	text-align: center;
+	display: inline;
+}
+.warningMsg {
+    color: Red;
+    font-weight:bold;
+    font-size: 1.5em;
+    text-align: center;
+    display: inline;
+}
+.leaflet-control-layers-expanded, .leaflet-control-layers-list {
+        height: 200px !important;
+}

@@ -1,0 +1,182 @@
+[user-settings]
+;-------------------------------------------------------------
+;Please change the below variables for your setup.
+;
+;For instance, if your on the USA east coast, your "localTimeZone" should be changed to: "America/New_York"
+;
+;You want to make your changes in between the quotes, 
+;
+;Each section has comments that should explain what they are for.
+;-------------------------------------------------------------
+
+
+;;SQL username, password, database name, table names.
+;You **must** at least update sql_user, sql_passwd, and sql_server to reflect *your* environment!
+;You probably do not want to (and should not) change the sql_db* entries unless you really know what you are doing!
+;-------------------------------------------------------------
+sql_user = "mesh-map"
+sql_passwd = "mesh-map_sql_user_password"
+sql_server = "localhost"
+sql_db = "node_map"
+sql_db_tbl = "node_info"
+sql_db_tbl_node = "node_info"
+sql_db_tbl_topo = "topology"
+sql_db_tbl_marker = "marker_info"
+
+;;Your localnode's IP address or hostname
+;The system running the get-map-info.php script should be able to resolve the host name.
+;If it cannot, you'll need to change this to an IP address.
+;Just leave it set at "localnode.local.mesh" unless you need to change it.
+;--------------------------------------------------------------
+localnode = "localnode.local.mesh"
+
+;;Current firmware version.
+;(this will have to be edited by hand each time it changes)
+;Sorry, no way around that yet.
+;--------------------------------------------------------------
+current_stable_fw_version = "3.19.3.0"
+
+;;Time Zone we're going to be running in.
+;It must be in "PHP Format". Sorry. :)
+;Please see: http://php.net/manual/en/timezones.php
+;If you need to change it, you can find it there.
+;--------------------------------------------------------------
+localTimeZone = "America/Los_Angeles"
+
+;;How often would you like the script sections to run? (in minutes)
+;node_polling_interval controls how often the scripts go out across the mesh to poll each node
+;Node polling uses mesh resources and really should not be done all that often.
+;More than once an hour is probably overkill, unless it's needed for a big build out or something.
+;--------------------------------------------------------------
+node_polling_interval = "61"
+
+;link_interval controls how often we update the link info
+;Getting the link info *does not* really use mesh resources, we just ask our localnode for the info.
+;In other words this part could be made to operate in pretty much realtime, but you probably should not do that.
+;5 minutes seems like a good setting here.
+;--------------------------------------------------------------
+link_update_interval = "5"
+
+;;There is another, new, aspect to node polling, it can be run in parallel.
+;a separate php script is spawned for each node on the network,
+;this runs much faster time wise, but you lose the ability to see what the node polling script is doing.
+;it probably doesn't use more resources than doing it sequetially, it just does it all in one big burst.
+;this does make the link lines take a bit longer properly to build in the database,
+;as sometimes the info is just not there yet. over time this seems to work itself out.
+;All this is being worked on, but for now, turn the parallelism on or off here
+;--------------------------------------------------------------
+node_polling_parallel = "0"
+numParallelThreads = "2"
+
+;;Map Center Coordinates and starting zoom level
+;These are the coordinates for the center of the map on the webpage, and the initial Zoom Level.
+;This will probably take some experimenting to get just right.
+;These values are for Ventura and Santa Barbara Counties in California.
+;--------------------------------------------------------------
+map_center_coordinates = "34.35, -119.6"
+map_initial_zoom_level = "10"
+
+;;Prefer Kilometers over Miles?
+;change to 1 to flip the preference
+;the map page will then show 1km (1.62mi)
+kilometers = "0"
+
+;;If you have map tiles or a mesh tile server of your own (or on your mesh network) put it here.
+;these map tiles will be used when there is no internet access available
+;if you use a directory name, it must be relative to the webroot.
+;ie: osm_tiles/{z}/{x}/{y}.png
+;
+;You can also use a full domain name here.
+;ie: //kg6wxc-srv.local.mesh/osm_tiles/{z}/{x}/{y}.png
+;
+;(z = zoom level, and x,y are x and y coords of the tile)
+;Most map tile servers (and many programs such as Xastir) conform to this default.
+;--------------------------------------------------------------
+offlineMapTileDir = "osm_tiles/{z}/{x}/{y}.png"
+
+;;Internet Map Tile servers you wish to use
+;These will be using in place of the offline maps when internet access is available
+;If you wish to add more, just create a new line in the same fashion.
+;ie: inetTileServer['Name of Map'] = "//new.server.name/tiles/blah/blah/{z}/{x}/{y}.png"
+;You could add them to your hearts content! Try not to go overboard. :)
+;
+;Append the string "-Default" to the name of the map you'd like to have shown by default
+;
+;You must include the /{z}/{x}/{y}.png here, but make sure your using the right one
+;for the server you are using. "/{z}/{x}/{y}.png" is just an example
+;--------------------------------------------------------------
+inetTileServer['Topographic'] = "//{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+inetTileServer['Street'] = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+inetTileServer['Terrain-Default'] = "//stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg"
+
+;;The Title of the web page, web page logo and the text above the map.
+;--------------------------------------------------------------
+pageTitle = "Mesh Map"
+;pageLogo = "images/MESHMAP_LOGO.svg"
+;logoHeaderText = "Mesh Map"
+
+;;Welcome to the Mesh Map Message
+;uncomment and edit the "otherTopOfMapMsg" below if you want to add other text above the map
+;--------------------------------------------------------------
+;welcomeMessage	=	"Welcome to the Mesh Map"
+;otherTopOfMapMsg = ""
+
+;;Custom message if you are on the Mesh Server
+;--------------------------------------------------------------
+;meshServerText = "You are connected to the Mesh Network and running on device: %s"
+
+;;Custom Message if you are on the Internet Server
+;--------------------------------------------------------------
+;inetServerText = "Your are connected to the internet and are running on device: %s"
+
+;;Custom Mesh Warning message
+;uncomment and edit to enable
+;--------------------------------------------------------------
+;meshWarning	=	""
+
+;;Node expiration intervals
+;after how many *days* do nodes get removed when we have not heard from them?
+;if the same node re-appears after this time it will get automatically removed from the ignore list,
+;and will continue to be updated as normal.
+;Set expire_old_nodes to "1" to actually expire the old nodes. "0" will not expire any nodes.
+;--------------------------------------------------------------
+node_expire_interval = "30"
+expire_old_nodes = "0"
+
+;;How many *hours* to ignore hosts that give us a 404 error when asking for the json files
+;a "404 error" from the node usually indicates it is running really old firmware.
+;this allows the script to only check these nodes once a day, and not waste time.
+;hopefully the owner will update one of these days. :)
+;--------------------------------------------------------------
+error404_expire_interval = "26"
+
+;;How many *minutes* to ignore nodes that give us a "no route to host" error
+;these may be temporary errors and should not be ignored long
+;--------------------------------------------------------------
+errorNoRoute_expire_interval = "90"
+
+;;How many *minutes* to ignore nodes that give us a "connection refused" error
+;these can also be quite temporary, like when olsrd happens to be restarting or something
+;--------------------------------------------------------------
+errorRefused_expire_interval = "90"
+
+;;The map has the ability to tell what host it is running on.
+;Things can change accordingly. Say you want the map on the mesh?
+;You'll need offline map files and to use offline js add-on scripts.
+;If your system can be accessed by both the mesh and the internet,
+;this may come in handy.
+;Just set these next three variables accodingly, if unsure leave them.
+;--------------------------------------------------------------
+meshServerHostName = ""
+inetServerHostname = ""
+
+;;Values below control how the map is displayed in map_display.php
+;--------------------------------------------------------------
+;Map size
+; 0 = display the map in full screen.
+; 1 = display the map in an iFrame.
+map_iFrame_Enabled = "0"
+
+;;Outerrors in "silent" mode (cron jobs)
+;leave set to "0" for now (3-29-19)
+errorsInCron = "0"
