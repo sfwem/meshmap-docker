@@ -1,10 +1,12 @@
 # Dockerfile for AREDN MeshMap Docker Container.
 # Run the AREDN MeshMap in a Docker Container
 #
+# Developed for the San Francisco Wireless Emergency Mesh project: https://www.sfwem.net
+#
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht
 # License:: Apache License, Version 2.0
-# Source:: https://github.com/ampledata/meshmap-docker
+# Source:: https://github.com/sfwem/meshmap-docker
 #
 
 FROM mattrayner/lamp:latest-1804
@@ -37,9 +39,9 @@ CMD ["meshmap"]
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="MeshMap" \
       org.label-schema.description="Eric Satterlee KG6WXC's AREDN MeshMap." \
-      org.label-schema.url="https://github.com/ampledata/meshmap-docker" \
-      org.label-schema.vcs-url="https://github.com/ampledata/meshmap-docker" \
-      org.label-schema.vcs-ref="https://github.com/ampledata/meshmap-docker" \
+      org.label-schema.url="https://github.com/sfwem/meshmap-docker" \
+      org.label-schema.vcs-url="https://github.com/sfwem/meshmap-docker" \
+      org.label-schema.vcs-ref="https://github.com/sfwem/meshmap-docker" \
       org.label-schema.vendor="Greg Albrecht" \
       org.label-schema.version="$VERSION" \
       org.label-schema.schema-version="1.0" \
@@ -52,5 +54,5 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
         -e 'MYSQL_USER_PASS=changeme' \
         -v `pwd`/meshmap-mysql:/var/lib/mysql \
         -v `pwd`/user-settings.ini:/meshmap/scripts/user-settings.ini \
-        ampledata/meshmap" \
+        sfwem/meshmap" \
       maintainer="oss@undef.net"

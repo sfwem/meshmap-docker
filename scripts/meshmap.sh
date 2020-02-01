@@ -2,10 +2,12 @@
 # Wrapper script that creates the node-map Tables if they don't already exist, and starts the get-map-info poller
 # in a loop with a POLLER_INTERVAL interval.
 #
+# Developed for the San Francisco Wireless Emergency Mesh project: https://www.sfwem.net
+#
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht
 # License:: Apache License, Version 2.0
-# Source:: https://github.com/ampledata/meshmap-docker
+# Source:: https://github.com/sfwem/meshmap-docker
 #
 
 set -x
@@ -42,20 +44,7 @@ while true; do
   echo 'Running Poller:'
   cd /app/meshmap/scripts
   ./get-map-info.php
-
-  if [[ -z $SYNC_DB && -z $CLEARDB_DATABASE_URL ]]; then
-    sleep 1
-    echo 'Backing up Database:'
-
-    mysqldump -u admin --password=${MYSQL_ADMIN_PASS} --skip-triggers node_map > /var/lib/mysql/node_map_backup.sql
-    mysql -v --reconnect \
-      -u $(/scripts/extract_url.py -u) \
-      --password=$(/scripts/extract_url.py -p) \
-      --host=$(/scripts/extract_url.py -H) \
-      $(/scripts/extract_url.py -d) \
-      < /var/lib/mysql/node_map_backup.sql
-  fi
-
+  ./sync_db.sh
   sleep ${POLLER_INTERVAL}
 done
 
