@@ -37,9 +37,26 @@ else
 fi
 
 echo "Starting get-map-info.php Loop with ${POLLER_INTERVAL} interval."
+
 while true; do
+  echo 'Running Poller:'
   cd /app/meshmap/scripts
   ./get-map-info.php
+
+  if [[ -z $SYNC_DB && -z $CLEARDB_DATABASE_URL ]]; then
+    sleep 1
+    echo 'Backing up Database:'
+
+    mysqldump -u admin --password=${MYSQL_ADMIN_PASS} --skip-triggers node_map > /var/lib/mysql/node_map_backup.sql
+    mysql -v --reconnect \
+      -u $(/scripts/extract_url.py -u) \
+      --password=$(/scripts/extract_url.py -p) \
+      --host=$(/scripts/extract_url.py -H) \
+      $(/scripts/extract_url.py -d) \
+      < /var/lib/mysql/node_map_backup.sql
+  fi
+
   sleep ${POLLER_INTERVAL}
 done
+
 echo "Exiting."

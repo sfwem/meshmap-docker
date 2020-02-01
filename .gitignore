@@ -1,3 +1,4 @@
 meshmap-mysql/
 user-settings.ini
 .idea/
+.mypy_cache
