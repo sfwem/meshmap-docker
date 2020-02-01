@@ -44,6 +44,7 @@ while true; do
   echo 'Running Poller:'
   cd /app/meshmap/scripts
   ./get-map-info.php
+  cd /scripts
   ./sync_db.sh
   sleep ${POLLER_INTERVAL}
 done
