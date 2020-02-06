@@ -1,4 +1,4 @@
-# ampledata/meshmap-docker
+# sfwem/meshmap-docker
 
 Docker container to run [Eric Satterlee KG6WXC's AREDN MeshMap](https://gitlab.kg6wxc.net/mesh/meshmap/tree/master).
 
@@ -19,7 +19,7 @@ Docker container to run [Eric Satterlee KG6WXC's AREDN MeshMap](https://gitlab.k
         -e "MYSQL_USER_PASS=changeme" \
         -v `pwd`/meshmap-mysql:/var/lib/mysql \
         -v `pwd`/user-settings.ini:/meshmap/scripts/user-settings.ini \
-        ampledata/meshmap
+        sfwem/meshmap
     ```
 5. Open a web browser and point it at http://localhost:8888
 
@@ -87,3 +87,5 @@ Copyright 2020 Greg Albrecht
 ## Authors
 
 - [Greg Albrecht W2GMD (@ampledata)](https://github.com/ampledata): Initial 'dockerization' of MeshMap.
+
+# Developed for the San Francisco Wireless Emergency Mesh project: https://www.sfwem.net

@@ -1,9 +1,11 @@
 # Makefile for AREDN MeshMap Docker Container.
 #
+# Developed for the San Francisco Wireless Emergency Mesh project: https://www.sfwem.net
+#
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht
 # License:: Apache License, Version 2.0
-# Source:: https://github.com/ampledata/meshmap-docker
+# Source:: https://github.com/sfwem/meshmap-docker
 #
 
 default: build
@@ -29,7 +31,7 @@ get_user_settings:
 	curl -so user-settings.ini https://gitlab.kg6wxc.net/mesh/meshmap/raw/master/scripts/user-settings.ini-default
 
 # Image and binary can be overidden with env vars.
-DOCKER_IMAGE ?= ampledata/meshmap
+DOCKER_IMAGE ?= sfwem/meshmap
 
 # Get the latest commit.
 GIT_COMMIT = $(shell git rev-parse --short HEAD)

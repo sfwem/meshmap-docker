@@ -2,10 +2,12 @@
 # Wrapper script that creates the node-map Tables if they don't already exist, and starts the get-map-info poller
 # in a loop with a POLLER_INTERVAL interval.
 #
+# Developed for the San Francisco Wireless Emergency Mesh project: https://www.sfwem.net
+#
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht
 # License:: Apache License, Version 2.0
-# Source:: https://github.com/ampledata/meshmap-docker
+# Source:: https://github.com/sfwem/meshmap-docker
 #
 
 set -x
@@ -37,9 +39,14 @@ else
 fi
 
 echo "Starting get-map-info.php Loop with ${POLLER_INTERVAL} interval."
+
 while true; do
+  echo 'Running Poller:'
   cd /app/meshmap/scripts
   ./get-map-info.php
+  cd /scripts
+  ./sync_db.sh
   sleep ${POLLER_INTERVAL}
 done
+
 echo "Exiting."
