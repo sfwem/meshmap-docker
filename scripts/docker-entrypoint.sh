@@ -4,7 +4,7 @@
 # Author:: Greg Albrecht W2GMD <oss@undef.net>
 # Copyright:: Copyright 2020 Greg Albrecht
 # License:: Apache License, Version 2.0
-# Source:: https://github.com/ampledata/meshmap-docker
+# Source:: https://github.com/sfwem/meshmap-docker
 #
 
 set -ex
